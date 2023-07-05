@@ -1,0 +1,36 @@
+
+<html>
+  <head>
+    <title>XMLHttpRequest Example</title>
+  </head>
+  <body><p><b>Question (c)</b></p>
+    <script>
+     //Create a new XMLHttpRequest object
+      var xhr = new XMLHttpRequest();
+
+      //Define HTTP method and URL
+      var method = "GET";
+      var url = "https://restcountries.com/v3.1/all";
+
+      //Open the request
+      xhr.open(method, url);
+       xhr.onload = function () {
+        if (xhr.status === 200) {
+
+         var result = JSON.parse(xhr.responseText);
+         console.log(result);
+         const details = ["name", "capital", "flag"];
+         result.forEach(function (item) {
+         const country =item.country;
+         console.log(item.name);
+         console.log(item.region);
+         console.log(item.flag);
+
+        });
+        } 
+       }
+    
+      xhr.send();
+    </script>
+  </body>
+</html>
